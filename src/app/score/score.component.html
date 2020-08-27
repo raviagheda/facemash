@@ -1,0 +1,32 @@
+<div>
+    <div id="score-board">
+        <button class="btn m-4" routerLink="/">Back</button>
+    </div>
+
+    <div class="container">
+        <h2 class="text-center title">
+            facemash Score
+        </h2>
+
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Images</th>
+                <th scope="col">Rank</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of this.dataservice.data; let i = index">
+                <th scope="row">{{ i+1 }}</th>
+                <td>
+                    <img src="{{item.url}}" alt="image is missing" width="200">
+                </td>
+                <td>{{ item.rank |number }}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+
+    
+</div>

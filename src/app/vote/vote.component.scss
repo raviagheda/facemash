@@ -1,0 +1,26 @@
+$btn-bg-color: #EEEEEE;
+#score-board > button{
+    // background-color: $btn-bg-color;
+    background-color: $btn-bg-color;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.title{
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.rank-panel{
+    width: fit-content;
+    // display: flex;
+}
+
+.rank-panel img{
+    cursor: pointer;
+    transition-duration: 0.1s;
+}
+
+.rank-panel img:hover{
+    height: 260px!important;
+}

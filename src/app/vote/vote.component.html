@@ -1,0 +1,35 @@
+<div>
+    <div id="score-board">
+        <button class="btn m-4" routerLink="/score-board">Score Board</button>
+    </div>
+    <div class="container mt-5">
+        <h1 class="text-center title">
+            facemash
+        </h1>
+
+        <br><br><br>
+        <div align="center" class="mb-4">
+            <div class="row rank-panel" style="width: fit-content;" *ngIf="this.innerwidth >= 1000">
+                <div class="col-auto">
+                    <img class="rounded shadow" src="{{this.dataservice.data[img1].url}}" alt="issue in url" height="250" (click)="onVote(this.img1)">
+                </div>
+                <div class="col-auto my-auto">Vs</div>
+                <div class="col-auto">
+                    <img class="rounded shadow" src="{{this.dataservice.data[img2].url}}" alt="issue in url" height="250" (click)="onVote(this.img2)">
+                </div>
+            </div>
+
+            <div *ngIf="this.innerwidth < 1000">
+                <div>
+                    <img class="rounded shadow" src="{{this.dataservice.data[img1].url}}" alt="issue in url" width="350" (click)="onVote(this.img1)">
+                </div>
+                <div class="my-3">
+                    Vs
+                </div>
+                <div>
+                    <img class="rounded shadow" src="{{this.dataservice.data[img2].url}}" alt="issue in url" width="350" (click)="onVote(this.img2)">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
