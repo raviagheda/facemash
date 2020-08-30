@@ -14,6 +14,7 @@ export class VoteComponent implements OnInit {
   public img2;
   private k = 100;
   innerwidth = 1211;
+  isLoading:Boolean = true;
 
   ngOnInit(): void {
     this.innerwidth = window.innerWidth;
@@ -22,13 +23,13 @@ export class VoteComponent implements OnInit {
   }
 
   select_two_images(){
+    this.isLoading = true;
     this.img1 = Math.floor(Math.random() * 1000) % this.dataservice.data.length;
     this.img2 = Math.floor(Math.random() * 1000) % this.dataservice.data.length;
     if(this.img1 == this.img2){
       this.img2 = Math.floor(Math.random() * 1000) % this.dataservice.data.length;
     }
-    // console.log(this.img1)
-    // console.log(this.img2)
+    this.isLoading = false;
   }
 
   private Expectation_of_winning(rating1, rating2){

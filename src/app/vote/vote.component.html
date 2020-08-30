@@ -9,27 +9,34 @@
 
         <br><br><br>
         <div align="center" class="mb-4">
-            <div class="row rank-panel" style="width: fit-content;" *ngIf="this.innerwidth >= 1000">
-                <div class="col-auto">
-                    <img class="rounded shadow" src="{{this.dataservice.data[img1].url}}" alt="issue in url" height="250" (click)="onVote(this.img1)">
+            <ng-container *ngIf="this.isLoading">
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+            </ng-container>
+            <ng-container *ngIf="!this.isLoading">
+                <div class="row rank-panel" style="width: fit-content;" *ngIf="this.innerwidth >= 1000">
+                    <div class="col-auto">
+                        <img class="rounded shadow" src="{{this.dataservice.data[img1].url}}" alt="issue in url" height="250" (click)="onVote(this.img1)">
+                    </div>
+                    <div class="col-auto my-auto">Vs</div>
+                    <div class="col-auto">
+                        <img class="rounded shadow" src="{{this.dataservice.data[img2].url}}" alt="issue in url" height="250" (click)="onVote(this.img2)">
+                    </div>
                 </div>
-                <div class="col-auto my-auto">Vs</div>
-                <div class="col-auto">
-                    <img class="rounded shadow" src="{{this.dataservice.data[img2].url}}" alt="issue in url" height="250" (click)="onVote(this.img2)">
+    
+                <div *ngIf="this.innerwidth < 1000">
+                    <div>
+                        <img class="rounded shadow" src="{{this.dataservice.data[img1].url}}" alt="issue in url" width="350" (click)="onVote(this.img1)">
+                    </div>
+                    <div class="my-3">
+                        Vs
+                    </div>
+                    <div>
+                        <img class="rounded shadow" src="{{this.dataservice.data[img2].url}}" alt="issue in url" width="350" (click)="onVote(this.img2)">
+                    </div>
                 </div>
-            </div>
-
-            <div *ngIf="this.innerwidth < 1000">
-                <div>
-                    <img class="rounded shadow" src="{{this.dataservice.data[img1].url}}" alt="issue in url" width="350" (click)="onVote(this.img1)">
-                </div>
-                <div class="my-3">
-                    Vs
-                </div>
-                <div>
-                    <img class="rounded shadow" src="{{this.dataservice.data[img2].url}}" alt="issue in url" width="350" (click)="onVote(this.img2)">
-                </div>
-            </div>
+            </ng-container>
         </div>
     </div>
 </div>
