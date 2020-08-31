@@ -22,12 +22,29 @@ export class VoteComponent implements OnInit {
     this.select_two_images();
   }
 
+  /**
+   * this will be called only in ngOninnit
+   */
   select_two_images(){
     this.isLoading = true;
     this.img1 = Math.floor(Math.random() * 1000) % this.dataservice.data.length;
     this.img2 = Math.floor(Math.random() * 1000) % this.dataservice.data.length;
     if(this.img1 == this.img2){
       this.img2 = Math.floor(Math.random() * 1000) % this.dataservice.data.length;
+    }
+    this.isLoading = false;
+  }
+
+  private select_one_image(i){
+    this.isLoading = true;
+    if (this.img2 == i) {
+      this.img1 = Math.floor(Math.random() * 1000) % this.dataservice.data.length;
+      if(this.img1 == this.img2)
+        this.img1 = Math.floor(Math.random() * 1000) % this.dataservice.data.length;
+    } else  {
+      this.img2 = Math.floor(Math.random() * 1000) % this.dataservice.data.length;
+      if(this.img1 == this.img2)
+        this.img2 = Math.floor(Math.random() * 1000) % this.dataservice.data.length;
     }
     this.isLoading = false;
   }
@@ -56,7 +73,8 @@ export class VoteComponent implements OnInit {
    */
   onVote(clickedImage){
     this.Update_Rank(clickedImage, this.k);
-    this.select_two_images();
+    // this.select_two_images();
+    this.select_one_image(clickedImage);
   }
 
 
